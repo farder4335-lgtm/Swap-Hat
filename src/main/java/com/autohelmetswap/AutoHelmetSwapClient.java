@@ -98,7 +98,7 @@ public class AutoHelmetSwapClient implements ClientModInitializer {
 
 			Click click = pending.poll();
 			if (click != null) {
-				mc.gameMode.handleInventoryMouseClick(player.inventoryMenu.containerId, click.slot(), click.button(),
+				mc.gameMode.handleContainerInput(player.inventoryMenu.containerId, click.slot(), click.button(),
 						ContainerInput.SWAP, player);
 			} else if (freezeTicks > 0) {
 				freezeTicks--;
@@ -157,7 +157,7 @@ public class AutoHelmetSwapClient implements ClientModInitializer {
 
 		if (slot < 0) {
 			Item missing = wanted != null ? wanted : first;
-			mc.gui.setOverlayMessage(Component.translatable("auto_helmet_swap.not_found", missing.label()), false);
+			player.sendOverlayMessage(Component.translatable("auto_helmet_swap.not_found", missing.label()));
 			return;
 		}
 

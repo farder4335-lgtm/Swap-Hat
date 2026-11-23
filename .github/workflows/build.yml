@@ -32,12 +32,9 @@ jobs:
         run: |
           J=/home/runner/.gradle/caches/fabric-loom/26.2/minecraft-merged.jar
           echo "Using $J"
-          javap -cp "$J" -public net.minecraft.client.Minecraft | grep -iE "screen|gui|gameMode|player\b|setOverlay"
-          echo "=== MultiPlayerGameMode"; javap -cp "$J" -public net.minecraft.client.multiplayer.MultiPlayerGameMode | grep -iE "container|click|input|inventory"
-          echo "=== KeyMapping"; javap -cp "$J" -public net.minecraft.client.KeyMapping | grep -iE "static|consume"
-          echo "=== Gui"; for g in net.minecraft.client.gui.Gui; do javap -cp "$J" -public $g | grep -iE "overlay|message|actionbar"; done
-          echo "=== LocalPlayer"; javap -cp "$J" -public net.minecraft.client.player.LocalPlayer | grep -iE "message|overlay|sendSystem"
-          echo "=== Player"; javap -cp "$J" -public net.minecraft.world.entity.player.Player | grep -iE "displayClient|message|overlay"
+          javap -cp "$J" -public net.minecraft.client.Minecraft | grep -i "screen"
+          echo "=== Gui"; javap -cp "$J" -public net.minecraft.client.gui.Gui | grep -i "screen"
+          echo "=== Screens"; javap -cp "$J" -public net.minecraft.client.gui.screens.Screen | head -5
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
