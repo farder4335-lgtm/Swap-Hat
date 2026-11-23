@@ -1,0 +1,7 @@
+{
+	"key.category.auto_helmet_swap.main": "Auto Helmet Swap",
+	"key.auto_helmet_swap.superman_jack": "Голова Супермена <-> Голова Джека",
+	"key.auto_helmet_swap.netherite_superman": "Незеритовый шлем <-> Голова Супермена",
+	"key.auto_helmet_swap.netherite_jack": "Незеритовый шлем <-> Голова Джека",
+	"auto_helmet_swap.not_found": "Предмет не найден в инвентаре: %s"
+}

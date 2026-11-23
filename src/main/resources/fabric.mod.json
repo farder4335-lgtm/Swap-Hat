@@ -1,0 +1,19 @@
+{
+	"schemaVersion": 1,
+	"id": "auto_helmet_swap",
+	"version": "${version}",
+	"name": "Auto Helmet Swap",
+	"description": "Client-side keybinds that swap your worn helmet/head with a named head or a Netherite Helmet from your inventory. Stops the player while swapping.",
+	"authors": ["farder4335-lgtm"],
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["com.autohelmetswap.AutoHelmetSwapClient"]
+	},
+	"depends": {
+		"fabricloader": ">=${loader_version}",
+		"minecraft": "~${minecraft_version}",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

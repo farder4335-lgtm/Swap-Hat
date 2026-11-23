@@ -1,0 +1,7 @@
+{
+	"key.category.auto_helmet_swap.main": "Auto Helmet Swap",
+	"key.auto_helmet_swap.superman_jack": "Superman Head <-> Jack Head",
+	"key.auto_helmet_swap.netherite_superman": "Netherite Helmet <-> Superman Head",
+	"key.auto_helmet_swap.netherite_jack": "Netherite Helmet <-> Jack Head",
+	"auto_helmet_swap.not_found": "Item not found in inventory: %s"
+}
