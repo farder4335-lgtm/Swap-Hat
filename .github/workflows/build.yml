@@ -30,12 +30,14 @@ jobs:
       - name: Dump Minecraft API (on failure, for debugging)
         if: failure()
         run: |
-          find ~/.gradle ~/work -name "minecraft*.jar" 2>/dev/null | head -20
-          J=$(find ~/.gradle -name "minecraft*merged*.jar" -o -name "minecraft-*.jar" 2>/dev/null | grep -v sources | head -1)
+          J=/home/runner/.gradle/caches/fabric-loom/26.2/minecraft-merged.jar
           echo "Using $J"
-          for c in net.minecraft.client.multiplayer.MultiPlayerGameMode net.minecraft.client.KeyMapping net.minecraft.world.entity.player.Inventory net.minecraft.world.inventory.ClickType net.minecraft.world.inventory.ContainerInput net.minecraft.client.gui.Gui; do
-            echo "=== $c"; javap -cp "$J" -public "$c" 2>&1 | head -80
-          done
+          javap -cp "$J" -public net.minecraft.client.Minecraft | grep -iE "screen|gui|gameMode|player\b|setOverlay"
+          echo "=== MultiPlayerGameMode"; javap -cp "$J" -public net.minecraft.client.multiplayer.MultiPlayerGameMode | grep -iE "container|click|input|inventory"
+          echo "=== KeyMapping"; javap -cp "$J" -public net.minecraft.client.KeyMapping | grep -iE "static|consume"
+          echo "=== Gui"; for g in net.minecraft.client.gui.Gui; do javap -cp "$J" -public $g | grep -iE "overlay|message|actionbar"; done
+          echo "=== LocalPlayer"; javap -cp "$J" -public net.minecraft.client.player.LocalPlayer | grep -iE "message|overlay|sendSystem"
+          echo "=== Player"; javap -cp "$J" -public net.minecraft.world.entity.player.Player | grep -iE "displayClient|message|overlay"
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4

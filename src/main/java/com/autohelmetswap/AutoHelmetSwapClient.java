@@ -12,7 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.ClickType;
+import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
@@ -99,7 +99,7 @@ public class AutoHelmetSwapClient implements ClientModInitializer {
 			Click click = pending.poll();
 			if (click != null) {
 				mc.gameMode.handleInventoryMouseClick(player.inventoryMenu.containerId, click.slot(), click.button(),
-						ClickType.SWAP, player);
+						ContainerInput.SWAP, player);
 			} else if (freezeTicks > 0) {
 				freezeTicks--;
 			} else {
