@@ -92,7 +92,7 @@ public class AutoHelmetSwapClient implements ClientModInitializer {
 			keyNetheriteSuperman.consumeClick();
 			keyNetheriteJack.consumeClick();
 
-			if (mc.screen != null) { // something opened - abort safely
+			if (mc.gui.screen() != null) { // something opened - abort safely
 				pending.clear();
 			}
 
@@ -114,7 +114,7 @@ public class AutoHelmetSwapClient implements ClientModInitializer {
 		while (keyNetheriteSuperman.consumeClick()) b = true;
 		while (keyNetheriteJack.consumeClick()) c = true;
 
-		if (mc.screen != null) {
+		if (mc.gui.screen() != null) {
 			return;
 		}
 
